@@ -1,39 +1,38 @@
 import unittest
 
 '''
-Question 4
+Question 5
 Level 1
 
 Question:
-Write a program which accepts a sequence of comma-separated numbers from console and generate a list and a tuple which contains every number.
-Suppose the following input is supplied to the program:
-34,67,55,33,12,98
-Then, the output should be:
-['34', '67', '55', '33', '12', '98']
-('34', '67', '55', '33', '12', '98')
+Define a class which has at least two methods:
+getString: to get a string from console input
+printString: to print the string in upper case.
+Also please include simple test function to test the class methods.
 
 Hints:
-In case of input data being supplied to the question, it should be assumed to be a console input.
-tuple() method can convert list to tuple
+Use __init__ method to construct some parameters
 '''
 
+class String():
+    def __init__(self, input_string):
+        self.s = input_string
+    
+    def upper(self):
+        return self.s.upper()
+
 def logic(input_string):
-    input_list = input_string.split(",")
-    input_tuple = tuple(input_list)
-    return {
-        "list": input_list,
-        "tuple": input_tuple
-    }
+    string_object = String(input_string)
+    logic_output = string_object.upper()
+    print(logic_output)
+    return logic_output
 
 class TestLogic(unittest.TestCase):
     def test_logic(self):
         self.assertEqual(
-            logic("34,67,55,33,12,98"), 
-            {
-                "list": ['34', '67', '55', '33', '12', '98'], 
-                "tuple": ('34', '67', '55', '33', '12', '98')
-            }, 
-            "Should be ['34', '67', '55', '33', '12', '98'] and ('34', '67', '55', '33', '12', '98')")
+            logic("OuiOui"), 
+            "OUIOUI", 
+            "Should be OUIOUI")
 
 if __name__ == '__main__':
     unittest.main()
